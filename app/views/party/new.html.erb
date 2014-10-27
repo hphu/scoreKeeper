@@ -1,0 +1,10 @@
+<h1>Create new party</h1>
+<%= form_for :party, url: party_index_path do |f| %>
+	<p>
+		<%= f.label :name %>
+		<%= f.text_field :name %>
+	</p>
+	<p>
+		<%= f.submit %>
+	</p>
+<% end %>
