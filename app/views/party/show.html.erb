@@ -2,3 +2,17 @@
 <%= @party.name %>
 </h1>
 <p>Find me in app/views/party/show.html.erb</p>
+<ul>
+<% @players_all.each do |p| %>
+<li>
+	<%= p.username %>
+</li>
+<% end %>
+</ul>
+
+<%= form_for(:player, remote: true, url: party_players_path(@party)) do |f| %>
+<%= f.text_field :username %>
+<%= f.submit %>
+<% end %>
+<!-- <input type="text" id="player_name"></input> -->
+<!-- <input type="submit" id="add_player" value="add player"></input> -->
