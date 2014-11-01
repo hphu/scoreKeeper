@@ -5,6 +5,7 @@ class PartyController < ApplicationController
 
   def show
   	@party = Party.find(params[:id])
+    @players_all = Players.where(party_id=@party.id)
   end
 
   def index
