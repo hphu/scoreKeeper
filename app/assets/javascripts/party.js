@@ -19,21 +19,4 @@ $(document).ready(function(){
 		}
 	});
 
-	// $('#add_player').on('click', function(){
-	// 	var username = $('#player_name').val();
-	// 	if (username.length > 0){
-	// 		$.ajax({
-	// 			type: "POST",
-	// 			url: document.URL + "/players",
-	// 			async: false,
-	// 			data: {
-	// 				"username" : username
-	// 			}
-	// 		}).done(function(){
-	// 			alert("done");
-	// 		})
-	// 	}
-	// 	alert(username);
-	// })
-
 });
