@@ -1,0 +1,19 @@
+<h1>Add Game Record</h1>
+<%= form_for :games, url: party_games_path(@party) do |f| %>
+	<p>
+		<%= f.label :winner %>
+		<%= f.text_field :winner %>
+	</p>
+		<p>
+		<%= f.label :loser %>
+		<%= f.text_field :loser %>
+	</p>
+	<p>
+		<%= f.label :notes %>
+		<%= f.text_area :notes %>
+	</p>
+
+	<p>
+		<%= f.submit %>
+	</p>
+<% end %>
