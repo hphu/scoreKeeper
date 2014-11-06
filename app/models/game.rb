@@ -1,5 +1,7 @@
 class Game < ActiveRecord::Base
 	belongs_to :party
-	has_one :winner, class_name: "player"
-	has_one :loser, class_name: "player"
+	belongs_to :winner, class_name: "Player", foreign_key: "winner_id"
+	belongs_to :loser, class_name: "Player", foreign_key: "loser_id"
+	validates :winner, presence: true
+	validates :loser, presence: true
 end

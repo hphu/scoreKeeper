@@ -2,11 +2,11 @@
 <%= form_for :games, url: party_games_path(@party) do |f| %>
 	<p>
 		<%= f.label :winner %>
-		<%= f.text_field :winner %>
+		<%= f.select(:winner_id, @my_player_options) %>
 	</p>
-		<p>
+	<p>
 		<%= f.label :loser %>
-		<%= f.text_field :loser %>
+		<%= f.select(:loser_id, @my_player_options) %>
 	</p>
 	<p>
 		<%= f.label :notes %>
