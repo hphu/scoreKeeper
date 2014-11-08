@@ -1,5 +1,8 @@
 <h1>Add Game Record</h1>
 <%= form_for :games, url: party_games_path(@party) do |f| %>
+	<% @game.errors.full_messages.each do |msg| %>
+	<p><%= msg %></p>
+	<% end %>
 	<p>
 		<%= f.label :winner %>
 		<%= f.select(:winner_id, @my_player_options) %>
