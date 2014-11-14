@@ -1,11 +1,14 @@
-<h1>Party#show for
+<h1>
 <%= @party.name %>
 </h1>
-<p>Find me in app/views/party/show.html.erb</p>
 <ul id="playerList">
 <% @players_all.each do |p| %>
 <li>
-	<%= p.username %>
+	<%= link_to p.username, party_player_path(@party.id, p.id) %>
+	<b> :   </b>
+	<%= @games_all.where(winner_id: p.id).count %>
+	<b> - </b>
+	<%= @games_all.where(loser_id: p.id).count %>
 </li>
 <% end %>
 </ul>
@@ -14,4 +17,5 @@
 <%= f.text_field :username %>
 <%= f.submit %>
 <%= link_to "New Game", new_party_game_path(@party) %>
+<%= link_to "View Games", party_games_path(@party) %>
 <% end %>

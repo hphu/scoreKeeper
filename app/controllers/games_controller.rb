@@ -1,5 +1,6 @@
 class GamesController < ApplicationController
 	def index
+		@party = Party.find(params[:party_id])
 	end
 
 	def new

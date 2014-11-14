@@ -6,7 +6,7 @@ class Game < ActiveRecord::Base
 	validate :winner_not_equal_loser
 
 	def winner_not_equal_loser
-		errors.add(:base, "Winner != Loser") unless self.winner_id != self.loser_id
+		errors.add(:base, "Winner cannot be the Loser.") unless self.winner_id != self.loser_id
 		
 	end
 end
