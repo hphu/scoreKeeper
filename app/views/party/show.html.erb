@@ -16,6 +16,10 @@
 <%= form_for(:player, remote: true, url: party_player_index_path(@party)) do |f| %>
 <%= f.text_field :username %>
 <%= f.submit %>
-<%= link_to "New Game", new_party_game_path(@party) %>
-<%= link_to "View Games", party_games_path(@party) %>
+<% if @players_all.count > 1 %>
+	<%= link_to "New Game", new_party_game_path(@party) %>
+	<%= link_to "View Games", party_games_path(@party) %>
+<% else %>
+	<b>Add players before creating games</b>
+<% end %>
 <% end %>

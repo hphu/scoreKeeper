@@ -6,17 +6,17 @@ class GamesController < ApplicationController
 	def new
 		@game = Game.new
 		@party = Party.find(params[:party_id])
-		@my_player_options = player_options(@party.player)
+		@my_player_options = player_options(@party.players)
 	end
 
 	def create
 		#validate game and save to db
 		@party = Party.find(params[:party_id])
-		@game = @party.game.create(game_params)
+		@game = @party.games.create(game_params)
 		if @game.save()
 			redirect_to @party
 		else
-			@my_player_options = player_options(@party.player)
+			@my_player_options = player_options(@party.players)
 			render 'new'
 		end
 	end

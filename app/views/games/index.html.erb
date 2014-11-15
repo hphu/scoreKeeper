@@ -1,18 +1,22 @@
 <h1>Games for <%= @party.name %></h1>
-<table>
-<tr>
-	<td><b>Date Recorded</b></td>
-	<td><b>Winner</b></td>
-	<td><b>Loser</b></td>
-	<td><b>Notes</b></td>
-</tr>
-
-<% @party.game.each do |game| %>
-<tr>
-	<td><%= game.created_at %></td>
-	<td><%= Player.find(game.winner_id.to_i).username %></td>
-	<td><%= Player.find(game.loser_id.to_i).username %></td>
-	<td><%= game.notes %></td>
-</tr>
-</table>
+<% if @party.games.count > 0 %>
+	<table>
+	<tr>
+		<td><b>Date Recorded</b></td>
+		<td><b>Winner</b></td>
+		<td><b>Loser</b></td>
+		<td><b>Notes</b></td>
+	</tr>
+	<% @party.games.each do |game| %>
+	<tr>
+		<td><%= game.created_at %></td>
+		<td><%= Player.find(game.winner_id.to_i).username %></td>
+		<td><%= Player.find(game.loser_id.to_i).username %></td>
+		<td><%= game.notes %></td>
+	</tr>
+	<% end %>
+	</table>
+<% else %>
+	No Games found.
+	<%= link_to "Return to Party", party_path(@party) %><br>
 <% end %>
