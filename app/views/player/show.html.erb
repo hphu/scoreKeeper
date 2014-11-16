@@ -1,5 +1,6 @@
-<h1><%= @player.username %></h1>
-<h2>Wins  <%= @wins.count %></h2>
+<h1><%= @player.username %></h1><%= @ratio %> % WR
+
+<div><h2>Wins  <%= @wins.count %></h2>
 <% if @wins.count > 0 %>
 	<table>
 	<tr>
@@ -19,7 +20,8 @@
 </table>
 <% else %>
 <% end %>
-<br>
+</div>
+<div>
 <h2>Losses  <%= @losses.count %></h2>
 <% if @losses.count > 0 %>
 	<table>
@@ -39,3 +41,4 @@
 	<% end %>
 	</table>
 <% end %>
+</div>
