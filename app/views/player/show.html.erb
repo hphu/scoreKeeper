@@ -1,36 +1,44 @@
-<h1><%= @player.username %></h1>
-<b>Wins</b><br>
-<table>
-<tr>
-	<td><b>Opponent</b></td>
-	<td><b>Notes</b></td>
-	<td><b>Date Recorded</b></td>
+<h1><%= @player.username %></h1><%= @ratio %> % WR
 
-</tr>
-<% @wins.each do |g| %>
-<tr>
-	<td><%= Player.find(g.loser_id.to_i).username %></td>
-	<td><%= g.notes %></td>
-	<td><%= g.created_at %></td>
+<div><h2>Wins  <%= @wins.count %></h2>
+<% if @wins.count > 0 %>
+	<table>
+	<tr>
+		<td><b>Opponent</b></td>
+		<td><b>Notes</b></td>
+		<td><b>Date Recorded</b></td>
 
-</tr>
-<% end %>
+	</tr>
+	<% @wins.each do |g| %>
+	<tr>
+		<td><%= Player.find(g.loser_id.to_i).username %></td>
+		<td><%= g.notes %></td>
+		<td><%= g.created_at %></td>
+
+	</tr>
+	<% end %>
 </table>
-<br>
-<b>Losses</b><br>
-<table>
-<tr>
-	<td><b>Opponent</b></td>
-	<td><b>Notes</b></td>
-	<td><b>Date Recorded</b></td>
-
-</tr>
-<% @losses.each do |g| %>
-<tr>
-	<td><%= Player.find(g.winner_id.to_i).username %></td>
-	<td><%= g.notes %></td>
-	<td><%= g.created_at %></td>
-
-</tr>
+<% else %>
 <% end %>
-</table>
+</div>
+<div>
+<h2>Losses  <%= @losses.count %></h2>
+<% if @losses.count > 0 %>
+	<table>
+	<tr>
+		<td><b>Opponent</b></td>
+		<td><b>Notes</b></td>
+		<td><b>Date Recorded</b></td>
+
+	</tr>
+	<% @losses.each do |g| %>
+	<tr>
+		<td><%= Player.find(g.winner_id.to_i).username %></td>
+		<td><%= g.notes %></td>
+		<td><%= g.created_at %></td>
+
+	</tr>
+	<% end %>
+	</table>
+<% end %>
+</div>

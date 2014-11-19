@@ -6,6 +6,7 @@ class PlayerController < ApplicationController
 		@player = Player.find(params[:id])
 		@wins = Game.where(winner_id: @player.id)
 		@losses = Game.where(loser_id: @player.id)
+		@ratio = Float(@wins.count) / (@losses.count + @wins.count) * 100
 	end
 
 	def create
