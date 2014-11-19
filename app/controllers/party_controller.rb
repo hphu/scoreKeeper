@@ -11,7 +11,7 @@ class PartyController < ApplicationController
 
   def index
   	#list parties
-  	@parties_all = Party.all
+  	@parties_all = Party.all.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 5, :page => params[:page])
   end
 
   def create
@@ -22,5 +22,16 @@ class PartyController < ApplicationController
   		render 'new'
   	end
   end
+
+  private
+
+  def sort_column
+    Party.column_names.include?(params[:sort]) ? params[:sort] : "name"
+  end
+
+  def sort_direction
+    ["asc", "desc"].include?(params[:direction]) ? params[:direction] : "asc"
+  end
+
 
 end

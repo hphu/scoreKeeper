@@ -1,0 +1,23 @@
+<%= hidden_field_tag :direction, params[:direction] %>
+<%= hidden_field_tag :sort, params[:sort] %>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>
+      <%= sortable "name" %>
+    </th>
+    <th>
+      <%= sortable "created_at", "Create Date" %>
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @parties_all.each do |party| %>
+      <tr>
+        <td><%= link_to party.name, party_path(party) %></td>
+        <td><%= party.created_at%></td>
+      </tr>
+  <%end%>
+  </tbody>
+</table>
+<%= will_paginate @parties_all %>
