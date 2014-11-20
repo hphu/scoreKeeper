@@ -1,5 +1,7 @@
-<h1><%= @player.username %></h1><%= @ratio %> % WR
-
+<h1><%= @player.username %></h1>
+<% unless @ratio.nan? %>
+<%= @ratio %> % WR
+<% end %>
 <div><h2>Wins  <%= @wins.count %></h2>
 <% if @wins.count > 0 %>
 	<table>

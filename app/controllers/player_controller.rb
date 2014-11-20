@@ -11,7 +11,7 @@ class PlayerController < ApplicationController
 
 	def create
 		@party = Party.find(params[:party_id])
-		@player = @party.player.build(params.require(:player).permit(:username))
+		@player = @party.players.build(params.require(:player).permit(:username))
 		respond_to do |format|
 			if @player.save()
 				format.js 

@@ -1,2 +1,2 @@
-$('#playerList').append(' <li> <%= @player.username %> : 0 - 0</li>');
+$('#playerList').append(' <li> <%= link_to @player.username, party_player_path(@party.id, @player.id) %> : 0 - 0</li>');
 $('#player_username').val("");
