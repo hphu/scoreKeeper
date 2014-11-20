@@ -11,7 +11,7 @@ $(function() {
     });
 
     //Select search terms using ajax
-    $("#parties_search input").keyup(function() {
+    $(document).on("#parties_search input").keyup(function() {
         $.get($("#parties_search").attr("action"), $("#parties_search").serialize(), null, "script");
         return false;
     });
