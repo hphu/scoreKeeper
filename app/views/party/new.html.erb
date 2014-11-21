@@ -1,13 +1,21 @@
-<h1>Create new party</h1>
-<%= form_for :party, url: party_index_path do |f| %>
-	<% @party.errors.full_messages.each do |msg| %>
-	<p><%= msg %></p>
-	<% end %>
-	<p>
-		<%= f.label :name %>
-		<%= f.text_field :name %>
-	</p>
-	<p>
-		<%= f.submit %>
-	</p>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <%= form_for :party, url: party_index_path do |f| %>
+          <% @party.errors.full_messages.each do |msg| %>
+              <p><%= msg %></p>
+          <% end %>
+          <p>
+            <%= f.label "Name your party:" %>
+            <%= f.text_field :name %>
+          </p>
+          <p>
+            <%= f.submit %>
+          </p>
+      <% end %>
+    </div>
+      <div class="col-md-6">
+        <%= form_for :player,
+      </div>
+      </div>
+</div>
