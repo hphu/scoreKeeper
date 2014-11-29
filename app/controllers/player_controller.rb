@@ -14,7 +14,7 @@ class PlayerController < ApplicationController
 		@player = @party.players.build(params.require(:player).permit(:username))
 		respond_to do |format|
 			if @player.save()
-				format.js 
+				format.js
 			end
 		end
 	end
