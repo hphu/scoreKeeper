@@ -15,13 +15,23 @@ class PartyController < ApplicationController
   end
 
   def create
-  	@party = Party.new(params.require(:party).permit(:name))
+
+    #Create the party
+    party_name = params[:name]
+  	@party = Party.new(:name => party_name)
+
+    #Save party and initialize players
   	if @party.save()
+
+      #Create the initial players
+      initialize_players
+
   		redirect_to @party
   	else
   		render 'new'
   	end
   end
+
 
   private
 
@@ -31,6 +41,19 @@ class PartyController < ApplicationController
 
   def sort_direction
     ["asc", "desc"].include?(params[:direction]) ? params[:direction] : "asc"
+  end
+
+  #intialize the first players of the party, return a list of initialized players
+  def initialize_players
+    initial_players = []
+    if params[:player_names]
+      player_names = params[:player_names].split(",")
+      player_names.each do |tag|
+        new_player = Player.create(:username => tag, :party_id => @party.id)
+        initial_players.append(new_player)
+      end
+    end
+    return initial_players
   end
 
 
