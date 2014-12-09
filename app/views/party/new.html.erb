@@ -1,13 +1,24 @@
-<h1>Create new party</h1>
-<%= form_for :party, url: party_index_path do |f| %>
-	<% @party.errors.full_messages.each do |msg| %>
-	<p><%= msg %></p>
-	<% end %>
-	<p>
-		<%= f.label :name %>
-		<%= f.text_field :name %>
-	</p>
-	<p>
-		<%= f.submit %>
-	</p>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <%= form_tag({:controller => "party", :action => "create"}, {:method => "post"}) do |f| %>
+          <% @party.errors.full_messages.each do |msg| %>
+              <p><%= msg %></p>
+          <% end %>
+          <p>
+            <%= label_tag "Name your party:" %>
+            <%= text_field_tag :name %>
+            <p>In the box below, add the players that you want to be part of your party. Separate the
+                name of each player with a comma. If you don't know who is going to be part of your party
+                yet don't worry, you can add more players later on!
+            </p>
+            <input name="player_names" id="player_names">
+          </p>
+          <p>
+            <%= submit_tag %>
+          </p>
+      <% end %>
+    </div>
+
+      </div>
+</div>

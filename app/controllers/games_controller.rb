@@ -24,8 +24,8 @@ class GamesController < ApplicationController
 	private
 		def game_params
 			params.require(:games).permit(:winner_id, :loser_id, :notes)
-		end
-	private
+    end
+
 		def player_options(players)
 			players.map {|p| [p.username, p.id]}
 		end

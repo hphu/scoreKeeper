@@ -1,6 +1,7 @@
-<h1>
-<%= @party.name %>
-</h1>
+<div class="container">
+<div class="row">
+<div class="col-md-12">
+<h4><u><%= @party.name %></u></h4>
 <ul id="playerList">
 <% @players_all.each do |p| %>
 <li>
@@ -23,3 +24,6 @@
 	<b>Add players before creating games</b>
 <% end %>
 <% end %>
+</div>
+</div>
+</div>

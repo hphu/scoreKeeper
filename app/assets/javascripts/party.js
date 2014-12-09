@@ -4,6 +4,11 @@
 
 //Jquery js to reorder columns and do searches without needing to press submit
 $(function() {
+    //for tag-it plugin
+    $('#player_names').tagit({
+        allowSpaces: true
+    });
+
     //Re-order columns through ajax
     $(document).on("click","#parties th a, #parties .pagination a", function() {
         $.getScript(this.href);
@@ -11,8 +16,10 @@ $(function() {
     });
 
     //Select search terms using ajax
-    $("#parties_search input").keyup(function() {
+    $(document).on("#parties_search input").keyup(function() {
         $.get($("#parties_search").attr("action"), $("#parties_search").serialize(), null, "script");
         return false;
     });
 });
+
+
